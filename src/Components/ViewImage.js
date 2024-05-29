@@ -8,19 +8,19 @@ import Header from './Header';
 const ViewImage = () => {
   const [imageBase64, setImageBase64] = useState('');
   const [email, setEmail] = useState('');
-  const [uploadStatus, setUploadStatus] = useState(''); // State to track upload status
+  const [uploadStatus, setUploadStatus] = useState(""); // State to track upload status
   const location = useLocation();
 
   useEffect(() => {
-    handleSetEmail();
-  }, []);
-
-  const handleSetEmail = () => {
-    if (location.state != null || location.state != undefined) {
-      console.log("email is ", location.state.email);
-      setEmail(location.state.email);
+    const handleSetEmail = () => {
+      if (location.state !== null || location.state !== undefined) {
+        console.log("email is ", location.state.email);
+        setEmail(location.state.email);
+      }
     }
-  }
+    handleSetEmail();
+  }, [location.state]);
+
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -50,7 +50,7 @@ const ViewImage = () => {
           sequenceNumber: i,
           isLastChunk,
         });
-        if (response.data.key != 1) {
+        if (response.data.key !== 1) {
           setUploadStatus('Error'); // Set status to "Error" if upload fails
           return;
         }
@@ -74,6 +74,7 @@ const ViewImage = () => {
       }}
     >
       <Header />
+      <p style={{color:'gray', fontSize:20, width:'90%', margin:'auto', paddingTop:20}}>make sure that 80% of your photo covers your face. Note that this will be the image that will be matched to take attendance in the future, so make sure you give us your best shot :)</p>
       <Button
         variant="contained"
         component="label"
