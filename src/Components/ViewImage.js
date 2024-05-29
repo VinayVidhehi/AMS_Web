@@ -66,7 +66,7 @@ const ViewImage = () => {
     <Box
       sx={{
         width: '100%',
-        paddingY: 2,
+        paddingBottom: 2,
         backgroundColor: '#eee',
         height: '100vh',
         marginX: 0,
