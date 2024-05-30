@@ -74,7 +74,7 @@ const ViewImage = () => {
       }}
     >
       <Header />
-      <p style={{color:'gray', fontSize:20, width:'90%', margin:'auto', paddingTop:20}}>make sure that 80% of your photo covers your face. Note that this will be the image that will be matched to take attendance in the future, so make sure you give us your best shot :)</p>
+      <p style={{color:'gray', fontSize:20, width:'90%', margin:'auto', paddingTop:20}}>make sure that 80% of your photo covers your face. Note that this will be the image that will be matched to take attendance in the future, so make sure you give us your best shot :). Uploading an image can be done any number of times, the latest one will be stored</p>
       <Button
         variant="contained"
         component="label"
