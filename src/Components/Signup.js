@@ -75,7 +75,7 @@ const Signup = () => {
           'https://ams-server-0djz.onrender.com/signup',
           {
             key: 0,
-            email: formData.email,
+            email: formData.email.toLowerCase(),
           }
         );
 
@@ -88,7 +88,7 @@ const Signup = () => {
         const response = await axios.post(
           'https://ams-server-0djz.onrender.com/signup',
           {
-            email: formData.email,
+            email: formData.email.toLowerCase(),
             otp: formData.otp,
             key: 1,
           }
@@ -105,7 +105,7 @@ const Signup = () => {
         const response = await axios.post(
           'https://ams-server-0djz.onrender.com/signup',
           {
-            email: formData.email,
+            email: formData.email.toLowerCase(),
             name: formData.name,
             password: formData.password,
             usn: formData.usn,

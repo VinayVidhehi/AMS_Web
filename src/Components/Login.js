@@ -32,7 +32,7 @@ const Login = () => {
       const response = await axios.post(
         "https://ams-server-0djz.onrender.com/login",
         {
-          email,
+          email:email.toLowerCase(),
           password,
         }
       );
