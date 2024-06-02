@@ -68,10 +68,11 @@ const Signup = () => {
       return;
     }
     setLoading(true);
-    alert("Please be patient till you receive OTP, it will take around a minute for the OTP to reach your mail")
+    
 
     try {
       if (authenticate === 0) {
+        alert("Please be patient till you receive OTP, it will take around a minute for the OTP to reach your mail")
         const response = await axios.post(
           'https://ams-server-0djz.onrender.com/signup',
           {
