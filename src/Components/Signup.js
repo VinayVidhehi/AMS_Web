@@ -68,6 +68,7 @@ const Signup = () => {
       return;
     }
     setLoading(true);
+    alert("Please be patient till you receive OTP, it will take around a minute for the OTP to reach your mail")
 
     try {
       if (authenticate === 0) {
