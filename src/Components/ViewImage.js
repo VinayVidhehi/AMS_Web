@@ -44,7 +44,7 @@ const ViewImage = () => {
       for (let i = 0; i < totalChunks; i++) {
         const chunk = base64String.slice(i * chunkSize, (i + 1) * chunkSize);
         const isLastChunk = i === totalChunks - 1;
-        const response = await axios.post("http://127.0.0.1:5000/predict", {
+        const response = await axios.post("https://facerecognition-mtcnn-fn-svm-model.onrender.com/predict", {
           email,
           chunk,
           sequenceNumber: i,
