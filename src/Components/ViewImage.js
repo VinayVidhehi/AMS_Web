@@ -8,6 +8,7 @@ import Header from "./Header";
 const ViewImage = () => {
   const [imageBase64, setImageBase64] = useState("");
   const [students, setStudents] = useState([]);
+  const [query, setQuery] = useState("");
   const [email, setEmail] = useState("");
   const [uploadStatus, setUploadStatus] = useState(""); // State to track upload status
   const location = useLocation();
@@ -44,7 +45,7 @@ const ViewImage = () => {
       for (let i = 0; i < totalChunks; i++) {
         const chunk = base64String.slice(i * chunkSize, (i + 1) * chunkSize);
         const isLastChunk = i === totalChunks - 1;
-        const response = await axios.post("https://facerecognition-mtcnn-fn-svm-model.onrender.com/predict", {
+        const response = await axios.post("https://9780-103-213-211-203.ngrok-free.app/predict", {
           email,
           chunk,
           sequenceNumber: i,
@@ -66,6 +67,19 @@ const ViewImage = () => {
       setUploadStatus("Error"); // Set status to "Error" on exception
     }
   };
+
+  const handleQueryUpload = async() => {
+    const response = await axios.post("https://ams-server-0djz.onrender.com/query",{
+      email,
+      query
+    });
+
+    if(response.data.key == 1) {
+      alert("query successfully sent, thanks for your feedback")
+    } else {
+      alert("unexpected error occured, thanks for your effort, please come back again")
+    }
+  }
 
   return (
     <Box
@@ -136,6 +150,11 @@ const ViewImage = () => {
             alt="Uploaded"
             style={{ maxWidth: "100%", maxHeight: 200, marginTop: 10 }}
           />
+          <br/>
+          <input type="string" defaultValue={"enter your query here"} onChange={(event) => setQuery(event.target.value)}/>
+          <Button onClick={handleQueryUpload} >
+            upload Query
+          </Button>
         </Box>
       )}
       {uploadStatus === "Error" && (
@@ -148,3 +167,4 @@ const ViewImage = () => {
 };
 
 export default ViewImage;
+
