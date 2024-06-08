@@ -74,7 +74,7 @@ const Signup = () => {
       if (authenticate === 0) {
         alert("Please be patient till you receive OTP, it will take around a minute for the OTP to reach your mail")
         const response = await axios.post(
-          'https://ams-server-0djz.onrender.com/signup',
+          'https://ams-server-0djz.onrender.com/student/signup',
           {
             key: 0,
             email: formData.email.toLowerCase(),
@@ -88,7 +88,7 @@ const Signup = () => {
         }
       } else if (authenticate === 1) {
         const response = await axios.post(
-          'https://ams-server-0djz.onrender.com/signup',
+          'https://ams-server-0djz.onrender.com/student/signup',
           {
             email: formData.email.toLowerCase(),
             otp: formData.otp,
@@ -105,7 +105,7 @@ const Signup = () => {
         }
       } else {
         const response = await axios.post(
-          'https://ams-server-0djz.onrender.com/signup',
+          'https://ams-server-0djz.onrender.com/student/signup',
           {
             email: formData.email.toLowerCase(),
             name: formData.name,

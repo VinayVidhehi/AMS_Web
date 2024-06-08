@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 
 const Login = () => {
   const Navigate = useNavigate();
 
-  useEffect(async() => {
-        const response = await axios.get("")
-        if(response.data.key === 1) {
-          console.log("server is up");
-        } else {
-          console.log("problem bringing up the server, try again later");
-        }
-  }, [])
+  useEffect(() => {
+    const bringUpServer = async () => {
+      const response = await axios.get("https://ams-server-0djz.onrender.com/server");
+      if (response.data.key === 1) {
+        console.log("server is up");
+      } else {
+        console.log("problem bringing up the server, try again later");
+      }
+    };
+    bringUpServer();
+  }, []);
 
   const [fpkey, setFpkey] = useState(0);
   const [buttonMessage, setButtonMessage] = useState("Login");
@@ -32,16 +35,16 @@ const Login = () => {
 
   const AlertButton = (text) => {
     alert(`Login: ${text}`);
-    Navigate('upload', {state:{email}});
+    Navigate("upload", { state: { email } });
   };
 
   const handleLogin = async () => {
     if (fpkey === 0) {
       setLoading(1);
       const response = await axios.post(
-        "https://ams-server-0djz.onrender.com/login",
+        "https://ams-server-0djz.onrender.com/student/login",
         {
-          email:email.toLowerCase(),
+          email: email.toLowerCase(),
           password,
         }
       );
@@ -65,7 +68,7 @@ const Login = () => {
       }
       setLoading(1);
       const response = await axios.post(
-        "https://ams-server-0djz.onrender.com/forget-password",
+        "https://ams-server-0djz.onrender.com/student/forget-password",
         {
           email,
           newPassword,
@@ -116,7 +119,10 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button onClick={handleForgetPasswordClick} style={styles.forgetPassword}>
+              <button
+                onClick={handleForgetPasswordClick}
+                style={styles.forgetPassword}
+              >
                 Forget Password?
               </button>
             </div>
@@ -159,7 +165,9 @@ const Login = () => {
                 width: "80%",
               }}
             >
-              <span style={{ textAlign: "center", color: "purple" }}>Back to login</span>
+              <span style={{ textAlign: "center", color: "purple" }}>
+                Back to login
+              </span>
             </button>
           )}
           <button
@@ -177,7 +185,9 @@ const Login = () => {
             }}
           >
             {loading === 1 ? (
-              <div className="spinner" style={{ color: "#ffffff" }}>Loading...</div>
+              <div className="spinner" style={{ color: "#ffffff" }}>
+                Loading...
+              </div>
             ) : (
               <span
                 style={{
@@ -193,7 +203,10 @@ const Login = () => {
           </button>
           <div style={styles.signupContainer}>
             <span style={styles.signupText}>I'm a new user.</span>
-            <button onClick={() => Navigate('signup')} style={styles.signupLink}>
+            <button
+              onClick={() => Navigate("signup")}
+              style={styles.signupLink}
+            >
               Sign Up
             </button>
           </div>
@@ -210,7 +223,7 @@ const styles = {
     borderColor: "black",
     borderWidth: 1,
     width: "100%",
-    height:'100vh',
+    height: "100vh",
     backgroundColor: "#eee",
     display: "flex",
     flexDirection: "column",
@@ -289,4 +302,3 @@ const styles = {
     cursor: "pointer",
   },
 };
-
