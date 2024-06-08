@@ -1,10 +1,19 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 
 const Login = () => {
   const Navigate = useNavigate();
+
+  useEffect(async() => {
+        const response = await axios.get("")
+        if(response.data.key === 1) {
+          console.log("server is up");
+        } else {
+          console.log("problem bringing up the server, try again later");
+        }
+  }, [])
 
   const [fpkey, setFpkey] = useState(0);
   const [buttonMessage, setButtonMessage] = useState("Login");
