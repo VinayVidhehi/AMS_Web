@@ -74,7 +74,7 @@ const ViewImage = () => {
       query
     });
 
-    if(response.data.key == 1) {
+    if(response.data.key === 1) {
       alert("query successfully sent, thanks for your feedback")
     } else {
       alert("unexpected error occured, thanks for your effort, please come back again")
