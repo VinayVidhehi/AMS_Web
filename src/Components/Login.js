@@ -42,10 +42,11 @@ const Login = () => {
     if (fpkey === 0) {
       setLoading(1);
       const response = await axios.post(
-        "https://ams-server-0djz.onrender.com/student/login",
+        "https://ams-server-0djz.onrender.com/login",
         {
           email: email.toLowerCase(),
           password,
+          isStaff:false,
         }
       );
 
@@ -68,9 +69,10 @@ const Login = () => {
       }
       setLoading(1);
       const response = await axios.post(
-        "https://ams-server-0djz.onrender.com/student/forget-password",
+        "https://ams-server-0djz.onrender.com/forget-password",
         {
           email,
+          isStaff:false,
           newPassword,
           confirmPassword,
         }

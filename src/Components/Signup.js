@@ -105,8 +105,9 @@ const Signup = () => {
         }
       } else {
         const response = await axios.post(
-          'https://ams-server-0djz.onrender.com/student/signup',
+          'https://ams-server-0djz.onrender.com/signup',
           {
+            isStaff:false,
             email: formData.email.toLowerCase(),
             name: formData.name,
             password: formData.password,
