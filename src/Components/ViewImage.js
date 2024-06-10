@@ -45,7 +45,7 @@ const ViewImage = () => {
       for (let i = 0; i < totalChunks; i++) {
         const chunk = base64String.slice(i * chunkSize, (i + 1) * chunkSize);
         const isLastChunk = i === totalChunks - 1;
-        const response = await axios.post("https://6b99-2409-40f2-3a-c70f-5552-a973-5479-2c0c.ngrok-free.app/predict", {
+        const response = await axios.post("https://8a8c-103-213-211-203.ngrok-free.app/predict", {
           email,
           chunk,
           sequenceNumber: i,
